@@ -1,5 +1,5 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
 
 const links = [
   {
@@ -44,6 +44,7 @@ const Navbar = () => {
             <Link href={link.url} key={link.id}>{link.title}</Link>
           ))
         }
+        <button onClick={() => { console.log("logout") }}>Logout</button>
       </div>
     </div>
   )
