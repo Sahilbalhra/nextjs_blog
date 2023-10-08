@@ -4,22 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 
 async function getData() {
-  // const res = await fetch("http://localhost:3000/api/posts", {
-  //   cache: "no-store",
-  // });
+  const res = await fetch("http://localhost:3000/api/posts", {
+    cache: "no-store",
+  });
+  // console.log("res:",res)
+  if (!res?.ok) {
+    throw new Error("Failed to fetch data");
+  }
 
-  // if (!res.ok) {
-  //   throw new Error("Failed to fetch data");
-  // }
-
-  return [];
+  return res.json();
 }
 
 const Blog = async () => {
   const data = await getData();
   return (
     <div className={styles.mainContainer}>
-      {data.map((item:any) => (
+      {data.map((item: any) => (
         <Link href={`/blog/${item._id}`} className={styles.container} key={item.id}>
           <div className={styles.imageContainer}>
             <Image
@@ -28,6 +28,7 @@ const Blog = async () => {
               width={400}
               height={250}
               className={styles.image}
+              loading="lazy"
             />
           </div>
           <div className={styles.content}>
