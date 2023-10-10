@@ -10,6 +10,13 @@ body {
   overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+  width: 0.35em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #53c28b;
+}
 a {
   text-decoration: none;
   color: inherit;
